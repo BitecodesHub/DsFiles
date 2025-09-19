@@ -1,0 +1,4 @@
+com/example/DsFiles/DsFilesApplication.class
+com/example/DsFiles/FileUploadController.class
+com/example/DsFiles/UploadedFileRepository.class
+com/example/DsFiles/UploadedFile.class
