@@ -1,13 +1,7 @@
 package com.example.DsFiles;
 
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "uploaded_files")
@@ -19,15 +13,17 @@ public class UploadedFile {
 
     private String fileName;
 
-    private String filePath;
-
     private LocalDateTime uploadedAt;
+
+    @Lob
+    @Column(name = "file_data", columnDefinition = "BLOB")
+    private byte[] fileData;
 
     public UploadedFile() {}
 
-    public UploadedFile(String fileName, String filePath) {
+    public UploadedFile(String fileName, byte[] fileData) {
         this.fileName = fileName;
-        this.filePath = filePath;
+        this.fileData = fileData;
         this.uploadedAt = LocalDateTime.now();
     }
 
@@ -35,8 +31,8 @@ public class UploadedFile {
     public Long getId() { return id; }
     public String getFileName() { return fileName; }
     public void setFileName(String fileName) { this.fileName = fileName; }
-    public String getFilePath() { return filePath; }
-    public void setFilePath(String filePath) { this.filePath = filePath; }
     public LocalDateTime getUploadedAt() { return uploadedAt; }
     public void setUploadedAt(LocalDateTime uploadedAt) { this.uploadedAt = uploadedAt; }
+    public byte[] getFileData() { return fileData; }
+    public void setFileData(byte[] fileData) { this.fileData = fileData; }
 }
