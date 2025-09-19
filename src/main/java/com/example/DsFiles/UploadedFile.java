@@ -16,8 +16,9 @@ public class UploadedFile {
     private LocalDateTime uploadedAt;
 
     @Lob
-    @Column(name = "file_data", columnDefinition = "BLOB")
     private byte[] fileData;
+
+//    private byte[] fileData;
 
     public UploadedFile() {}
 
